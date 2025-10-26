@@ -126,16 +126,17 @@ img.profile-photo {
 }
 
 /* Hero Background Slider */
-.hero-background-slider {
+/* .hero-background-slider {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: 1;
-}
+    opacity: 0.3; 
+} */
 
-.hero-bg-slide {
+/* .hero-bg-slide {
     position: absolute;
     top: 0;
     left: 0;
@@ -144,14 +145,38 @@ img.profile-photo {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    opacity: 0;
+    opacity: 0.3;
     transition: opacity 2s ease-in-out;
-}
+} */
 
-.hero-bg-slide.active {
+/* .hero-bg-slide.active {
     opacity: 1;
-}
-
+} */
+/* Background slider sits behind everything */
+.hero-background-slider{
+    position:absolute;
+    inset:0;
+    z-index:0;          /* was 1 */
+    overflow:hidden;
+  }
+  
+  /* Each bg slide fades/zooms */
+  .hero-bg-slide{
+    position:absolute;
+    inset:0;
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    opacity:0;                          /* was 0.3 */
+    transform:scale(1.06);
+    transition:opacity 1.2s ease, transform 6s ease;
+    will-change:opacity, transform;
+  }
+  .hero-bg-slide.active{
+    opacity:1;
+    transform:scale(1);
+  }
+  
 /* Flip Card Animation */
 .flip-card {
     background-color: transparent;
@@ -612,3 +637,19 @@ a:focus {
         scroll-behavior: auto;
     }
 }
+
+/* Hero carousel visibility */
+.hero-carousel .hero-slide {
+    display: none;
+    /* opacity: 0; */
+    transition: opacity .6s ease;
+  }
+  .hero-carousel .hero-slide.active {
+    display: block;
+    opacity: 1;
+  }
+  
+  /* Optional: dot state */
+  .carousel-dot { opacity: .4; }
+  .carousel-dot.active { opacity: 1; }
+  

@@ -129,13 +129,13 @@
     <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
         <!-- Background Slider -->
         <div class="hero-background-slider">
-            <div class="hero-bg-slide active" style="background-image: url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');"></div>
-            <div class="hero-bg-slide" style="background-image: url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');"></div>
+            <div class="hero-bg-slide active" style="background-image: url('assets/images/bg-electronics.webp');"></div>
+            <div class="hero-bg-slide" style="background-image: url('assets/images/bg-circut-ai.webp');"></div>
             <div class="hero-bg-slide" style="background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');"></div>
         </div>
         
         <!-- Dark Overlay -->
-        <div class="absolute inset-0 bg-black/50 dark:bg-black/70"></div>
+        <div class="absolute inset-0 bg-black/50 dark:bg-black/70 z-[1]"></div>
         
         <!-- Hero Carousel -->
         <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -185,15 +185,16 @@
                 <!-- Slide 2 -->
                 <div class="hero-slide">
                     <div class="text-center">
-                        <h1 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+                        <!-- <h1 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6"> -->
+                        <h1 class="text-4xl md:text-6xl font-bold text-gray-900 text-white mb-6">
                             Full Stack <span class="text-primary-600 dark:text-primary-400">Developer</span>
                         </h1>
-                        <p class="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
+                        <p class="text-xl text-gray-400 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
                             Creating end-to-end solutions with modern technologies and best practices
                         </p>
-                        <div class="flex justify-center space-x-8">
+                        <div class="flex justify-center text-white space-x-8">
                             <div class="skill-badge">
-                                <i class="fab fa-php text-4xl text-purple-500"></i>
+                                <i class="fab fa-php text-4xl  text-purple-500"></i>
                                 <span class="text-sm font-medium">PHP</span>
                             </div>
                             <div class="skill-badge">
@@ -205,7 +206,7 @@
                                 <span class="text-sm font-medium">JavaScript</span>
                             </div>
                             <div class="skill-badge">
-                                <i class="fab fa-mysql text-4xl text-blue-500"></i>
+                                <i class="fas fa-database text-4xl text-blue-500"></i>
                                 <span class="text-sm font-medium">MySQL</span>
                             </div>
                         </div>
@@ -215,26 +216,27 @@
                 <!-- Slide 3 -->
                 <div class="hero-slide">
                     <div class="text-center">
-                        <h1 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+                        <!-- <h1 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white  mb-6"> -->
+                        <h1 class="text-4xl md:text-6xl font-bold text-gray-900 text-white  mb-6">
                             API <span class="text-primary-600 dark:text-primary-400">Specialist</span>
                         </h1>
-                        <p class="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
+                        <p class="text-xl text-gray-400 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
                             Building robust APIs and integrating third-party services for scalable applications
                         </p>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-                            <div class="feature-card p-6 rounded-lg bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm">
+                            <div class="feature-card p-6 rounded-lg bg-white/70 dark:bg-gray-800/50 backdrop-blur-sm">
                                 <i class="fas fa-cogs text-3xl text-primary-500 mb-4"></i>
-                                <h3 class="text-lg font-semibold mb-2">API Development</h3>
+                                <h3 class="text-lg font-semibold mb-2 dark:text-gray-500">API Development</h3>
                                 <p class="text-gray-600 dark:text-gray-300">RESTful APIs with Laravel</p>
                             </div>
-                            <div class="feature-card p-6 rounded-lg bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm">
+                            <div class="feature-card p-6 rounded-lg bg-white/70 dark:bg-gray-800/50 backdrop-blur-sm">
                                 <i class="fas fa-database text-3xl text-primary-500 mb-4"></i>
-                                <h3 class="text-lg font-semibold mb-2">Database Design</h3>
+                                <h3 class="text-lg font-semibold mb-2 dark:text-gray-500">Database Design</h3>
                                 <p class="text-gray-600 dark:text-gray-300">Optimized MySQL schemas</p>
                             </div>
-                            <div class="feature-card p-6 rounded-lg bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm">
+                            <div class="feature-card p-6 rounded-lg bg-white/70 dark:bg-gray-800/50 backdrop-blur-sm">
                                 <i class="fas fa-cloud text-3xl text-primary-500 mb-4"></i>
-                                <h3 class="text-lg font-semibold mb-2">Cloud Integration</h3>
+                                <h3 class="text-lg font-semibold mb-2 dark:text-gray-500">Cloud Integration</h3>
                                 <p class="text-gray-600 dark:text-gray-300">AWS and deployment</p>
                             </div>
                         </div>

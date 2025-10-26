@@ -259,63 +259,211 @@ function initializeHeroCarousel() {
 }
 
 // Projects Carousel
+// function initializeProjectsCarousel() {
+//     const container = document.querySelector('.projects-container');
+//     const cards = document.querySelectorAll('.project-card');
+//     const prevBtn = document.querySelector('.carousel-prev');
+//     const nextBtn = document.querySelector('.carousel-next');
+    
+//     let currentIndex = 0;
+//     const cardsPerView = getCardsPerView();
+    
+//     function getCardsPerView() {
+//         if (window.innerWidth >= 1024) return 3;
+//         if (window.innerWidth >= 768) return 2;
+//         return 1;
+//     }
+    
+//     function updateCarousel() {
+//         const cardWidth = 100 / cardsPerView;
+//         const translateX = -currentIndex * cardWidth;
+//         container.style.transform = `translateX(${translateX}%)`;
+//     }
+    
+//     function nextSlide() {
+//         const maxIndex = Math.max(0, cards.length - cardsPerView);
+//         currentIndex = currentIndex >= maxIndex ? 0 : currentIndex + 1;
+//         updateCarousel();
+//     }
+    
+//     function prevSlide() {
+//         const maxIndex = Math.max(0, cards.length - cardsPerView);
+//         currentIndex = currentIndex <= 0 ? maxIndex : currentIndex - 1;
+//         updateCarousel();
+//     }
+    
+//     // Event listeners
+//     nextBtn.addEventListener('click', nextSlide);
+//     prevBtn.addEventListener('click', prevSlide);
+    
+//     // Auto-play
+//     let autoPlayInterval = setInterval(nextSlide, 4000);
+    
+//     // Pause on hover
+//     const projectsSection = document.querySelector('#projects');
+//     projectsSection.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+//     projectsSection.addEventListener('mouseleave', () => {
+//         autoPlayInterval = setInterval(nextSlide, 4000);
+//     });
+    
+//     // Responsive handling
+//     window.addEventListener('resize', function() {
+//         const newCardsPerView = getCardsPerView();
+//         if (newCardsPerView !== cardsPerView) {
+//             currentIndex = 0;
+//             updateCarousel();
+//         }
+//     });
+    
+//     // Initialize
+//     updateCarousel();
+// }
+// Projects Carousel
 function initializeProjectsCarousel() {
     const container = document.querySelector('.projects-container');
     const cards = document.querySelectorAll('.project-card');
     const prevBtn = document.querySelector('.carousel-prev');
     const nextBtn = document.querySelector('.carousel-next');
-    
+    if (!container || cards.length === 0 || !prevBtn || !nextBtn) return;
+
     let currentIndex = 0;
-    const cardsPerView = getCardsPerView();
-    
+    let cardsPerView = getCardsPerView();
+
     function getCardsPerView() {
         if (window.innerWidth >= 1024) return 3;
         if (window.innerWidth >= 768) return 2;
         return 1;
     }
-    
+
+    function getGapPx() {
+        const s = getComputedStyle(container);
+        return parseFloat(s.columnGap || s.gap || '0');
+    }
+
     function updateCarousel() {
-        const cardWidth = 100 / cardsPerView;
-        const translateX = -currentIndex * cardWidth;
-        container.style.transform = `translateX(${translateX}%)`;
+        // Move in pixels to account for gap precisely
+        const gap = getGapPx();
+        const cardWidth = cards[0].getBoundingClientRect().width;
+        const offset = currentIndex * (cardWidth + gap);
+        container.style.transform = `translateX(${-offset}px)`;
     }
-    
+
+    function clampIndex(i) {
+        const maxIndex = Math.max(0, cards.length - cardsPerView);
+        if (i < 0) return maxIndex;
+        if (i > maxIndex) return 0;
+        return i;
+    }
+
     function nextSlide() {
-        const maxIndex = Math.max(0, cards.length - cardsPerView);
-        currentIndex = currentIndex >= maxIndex ? 0 : currentIndex + 1;
+        currentIndex = clampIndex(currentIndex + 1);
         updateCarousel();
     }
-    
+
     function prevSlide() {
-        const maxIndex = Math.max(0, cards.length - cardsPerView);
-        currentIndex = currentIndex <= 0 ? maxIndex : currentIndex - 1;
+        currentIndex = clampIndex(currentIndex - 1);
         updateCarousel();
     }
-    
-    // Event listeners
+
+    // Events
     nextBtn.addEventListener('click', nextSlide);
     prevBtn.addEventListener('click', prevSlide);
-    
+
     // Auto-play
     let autoPlayInterval = setInterval(nextSlide, 4000);
-    
+
     // Pause on hover
     const projectsSection = document.querySelector('#projects');
     projectsSection.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
     projectsSection.addEventListener('mouseleave', () => {
         autoPlayInterval = setInterval(nextSlide, 4000);
     });
-    
-    // Responsive handling
-    window.addEventListener('resize', function() {
-        const newCardsPerView = getCardsPerView();
-        if (newCardsPerView !== cardsPerView) {
+
+    // Responsive
+    window.addEventListener('resize', () => {
+        const newPerView = getCardsPerView();
+        if (newPerView !== cardsPerView) {
+            cardsPerView = newPerView;
             currentIndex = 0;
-            updateCarousel();
         }
+        updateCarousel();
     });
-    
-    // Initialize
+
+    // Init
+    updateCarousel();
+}
+
+// Testimonials Carousel
+function initializeTestimonialsCarousel() {
+    const container = document.querySelector('.testimonials-container');
+    const cards = document.querySelectorAll('.testimonial-card');
+    const prevBtn = document.querySelector('.testimonial-prev');
+    const nextBtn = document.querySelector('.testimonial-next');
+    if (!container || cards.length === 0 || !prevBtn || !nextBtn) return;
+
+    let currentIndex = 0;
+    let cardsPerView = getCardsPerView();
+
+    function getCardsPerView() {
+        if (window.innerWidth >= 1024) return 3;
+        if (window.innerWidth >= 768) return 2;
+        return 1;
+    }
+
+    function getGapPx() {
+        const s = getComputedStyle(container);
+        return parseFloat(s.columnGap || s.gap || '0');
+    }
+
+    function updateCarousel() {
+        const gap = getGapPx();
+        const cardWidth = cards[0].getBoundingClientRect().width;
+        const offset = currentIndex * (cardWidth + gap);
+        container.style.transform = `translateX(${-offset}px)`;
+    }
+
+    function clampIndex(i) {
+        const maxIndex = Math.max(0, cards.length - cardsPerView);
+        if (i < 0) return maxIndex;
+        if (i > maxIndex) return 0;
+        return i;
+    }
+
+    function nextSlide() {
+        currentIndex = clampIndex(currentIndex + 1);
+        updateCarousel();
+    }
+
+    function prevSlide() {
+        currentIndex = clampIndex(currentIndex - 1);
+        updateCarousel();
+    }
+
+    // Controls
+    nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
+
+    // Auto-play (reverse)
+    let autoPlayInterval = setInterval(prevSlide, 3500);
+
+    // Pause on hover
+    const testimonialsSection = document.querySelector('#testimonials');
+    testimonialsSection.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+    testimonialsSection.addEventListener('mouseleave', () => {
+        autoPlayInterval = setInterval(prevSlide, 3500);
+    });
+
+    // Responsive
+    window.addEventListener('resize', () => {
+        const newPerView = getCardsPerView();
+        if (newPerView !== cardsPerView) {
+            cardsPerView = newPerView;
+            currentIndex = 0;
+        }
+        updateCarousel();
+    });
+
+    // Init
     updateCarousel();
 }
 
