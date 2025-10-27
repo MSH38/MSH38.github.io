@@ -626,3 +626,95 @@ a:focus {
   .carousel-dot { opacity: .4; }
   .carousel-dot.active { opacity: 1; }
   
+
+/* === Responsive Overhaul (fluid grids, fluid type, safe viewport) === */
+
+/* safer viewport height on mobile toolbars */
+#home,
+.hero-section {
+  min-height: 100svh; /* uses small viewport on iOS/Chrome */
+}
+
+/* fluid type for hero headings & subtext (overrides Tailwind sizes slightly) */
+.hero-slide h1 {
+  font-size: clamp(1.75rem, 3.2vw + 1rem, 3.5rem);
+  line-height: 1.1;
+}
+.hero-slide p {
+  font-size: clamp(.95rem, .5vw + .8rem, 1.125rem);
+}
+
+/* flip-card height becomes fluid instead of fixed 500px */
+.flip-card {
+  height: clamp(320px, 50vh, 520px);
+}
+
+/* project/testimonial images scale by viewport, not fixed 250px */
+.project-image { 
+  height: clamp(180px, 24vw, 260px);
+}
+
+/* ===== Cards as auto-fit Grids instead of fixed 33.333% flex ===== */
+.projects-container,
+.testimonials-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  transition: none;        /* prevent grid jumping when JS adjusts transform */
+}
+
+/* remove rigid flex sizing from cards */
+.project-card,
+.testimonial-card {
+  flex: initial !important;
+  width: auto !important;
+  max-width: 100%;
+}
+
+/* keep nice hover without layout shift */
+.project-card:hover,
+.testimonial-card:hover {
+  transform: translateY(-6px) scale(1.01);
+}
+
+/* prevent long tech tags / skills from overflowing */
+.tech-tag,
+.skill-tag {
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* hero background: ensure good GPU performance & contain */
+.hero-bg-slide {
+  background-position: center;
+  background-size: cover;
+  will-change: opacity, transform;
+}
+
+/* nav: allow link groups to wrap on mid widths if needed */
+@media (max-width: 1024px) {
+  .nav-link { padding-inline: .5rem; }
+}
+
+/* tighter gutters on very small phones */
+@media (max-width: 400px) {
+  .projects-container,
+  .testimonials-container {
+    gap: 1rem;
+  }
+  .project-content, .testimonial-card { padding: 1rem; }
+}
+
+/* Contact form inputs: prevent overflow on narrow screens */
+#contact-form input,
+#contact-form textarea {
+  width: 100%;
+  min-width: 0; /* fix iOS overflow */
+}
+
+/* Timeline: hide center dot on narrow view, stack content */
+@media (max-width: 991.98px) {
+  .timeline-dot { display: none; }
+}
