@@ -5,11 +5,6 @@
     text-align: right;
 }
 
-/* [dir="rtl"] .flex {
-    flex-direction: row-reverse;
-} */
-
-/* opt-in RTL row reverse only where you add .rtl-row */
 [dir="rtl"] .rtl-row {
     flex-direction: row-reverse;
 }
