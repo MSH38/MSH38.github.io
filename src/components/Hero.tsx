@@ -2,7 +2,7 @@ import { Button } from './ui/button';
 import { Github, Linkedin, Mail, ExternalLink } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { personalInfo } from '@/data/portfolio';
-// import msh from '@/Public/images/msh.jpeg';
+import msh from '@/Public/images/msh.jpeg';
 export const Hero = () => {
   const { t } = useLanguage();
 
@@ -21,14 +21,15 @@ export const Hero = () => {
             <div className="w-64 h-64 rounded-full bg-gradient-to-br from-primary to-accent p-1">
               <div className="w-full h-full rounded-full bg-background flex items-center justify-center text-4xl font-bold">
                 {/* {personalInfo.name.split(' ').map(n => n[0]).join('')} */}
-                <img
+                {/* <img
                   src={`${import.meta.env.BASE_URL}Public/images/msh.jpeg`}
                   alt="Mahmoud Samy Heikal"
                   className="w-full h-full rounded-full object-cover object-center scale-125 will-change-transform"
                   loading="lazy"
                   width={256}
                   height={256}
-                />
+                /> */}
+                <img src={msh} alt="Mahmoud Samy Heikal" className="..." width={256} height={256} />
               </div>
             </div>
           </div>
