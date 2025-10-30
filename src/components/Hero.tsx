@@ -21,7 +21,7 @@ export const Hero = () => {
             <div className="w-48 h-48 md:w-64 md:h-64 rounded-full bg-gradient-to-br from-primary via-accent to-secondary p-1 animate-pulse-glow">
               <div className="w-full h-full rounded-full bg-background flex items-center justify-center overflow-hidden">
                 <img
-                  src="Public/images/msh.jpeg"
+                  src="images/msh.jpeg"
                   alt="Mahmoud Samy Heikal"
                   className="w-full h-full object-cover object-center scale-110"
                   loading="eager"
