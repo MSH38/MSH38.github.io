@@ -1,38 +1,39 @@
-name: Build and Deploy
+name: Build and Deploy to GitHub Pages
 
 on:
   push:
     branches:
-      - main   # يشتغل لما تعمل push على فرع main
+      - main
+
+permissions:
+  contents: write  # ضروري علشان يقدر يرفع ملفات النشر
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      # ✅ 1. نجيب الكود من الريبو
+      # 1️⃣ Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # ✅ 2. نجهز Node.js
+      # 2️⃣ Setup Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '22.21.0' # غيّرها حسب نسختك
+          node-version: 22
 
-      # ✅ 3. نثبت البكجات
+      # 3️⃣ Install dependencies
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      # ✅ 4. نعمل build
+      # 4️⃣ Build project
       - name: Build project
         run: npm run build
 
-      # ✅ 5. نرفع الناتج (build folder) إلى فرع gh-pages
+      # 5️⃣ Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          branch: gh-pages              
-          folder: dist                  # اسم فولدر الـ build (غيرها لو اسم فولدرك build)
-          clean: true
-          commit-message: "Deploying to GitHub Pages"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
