@@ -64,7 +64,7 @@ export const Hero = () => {
               className="gap-2 shadow-md hover:shadow-lg transition-shadow bg-slate-800 dark:bg-slate-700 hover:bg-slate-900 dark:hover:bg-slate-600 text-white" 
               asChild
             >
-              <a href={personalInfo.cvUrl} target="_blank" rel="noopener noreferrer">
+              <a href="https://drive.google.com/file/d/1B3zF5bvnpK4QxJIvwoxR1XcL5q3ACHjy/view?usp=drive_link" target="_blank" rel="noopener noreferrer">
                 <Download className="w-4 h-4" />
                 {t('Download CV', 'تحميل السيرة الذاتية')}
               </a>
@@ -90,7 +90,7 @@ export const Hero = () => {
             </Button>
             <Button variant="ghost" size="icon" asChild>
               <a 
-                href={`https://wa.me/${personalInfo.whatsapp}`}
+                href={`https://wa.me/+201017011391`}
                 target="_blank" 
                 rel="noopener noreferrer" 
                 aria-label="WhatsApp"

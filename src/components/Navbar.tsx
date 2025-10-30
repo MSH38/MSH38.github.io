@@ -22,7 +22,7 @@ export const Navbar = () => {
     { en: 'About', ar: 'نبذة', href: '#about' },
     { en: 'Experience', ar: 'الخبرة', href: '#experience' },
     { en: 'Projects', ar: 'المشاريع', href: '#projects' },
-    { en: 'Testimonials', ar: 'التوصيات', href: '#testimonials' },
+    { en: 'Reviews', ar: 'اراء العملاء', href: '#testimonials' },
     { en: 'Contact', ar: 'تواصل', href: '#contact' }
   ];
 

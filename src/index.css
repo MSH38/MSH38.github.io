@@ -8,7 +8,7 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 210 20% 98%;
+    --background: 220 15% 97%;
     --foreground: 222 47% 11%;
 
     --card: 0 0% 100%;
@@ -20,14 +20,17 @@ All colors MUST be HSL.
     --primary: 217 91% 60%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222 47% 11%;
+    --secondary: 280 65% 70%;
+    --secondary-foreground: 0 0% 100%;
 
     --muted: 210 40% 96%;
     --muted-foreground: 215 16% 47%;
 
     --accent: 266 85% 58%;
     --accent-foreground: 0 0% 100%;
+    
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
@@ -39,8 +42,11 @@ All colors MUST be HSL.
     --radius: 0.75rem;
     
     --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(266 85% 58%));
-    --gradient-hero: linear-gradient(135deg, hsl(217 91% 60% / 0.1), hsl(266 85% 58% / 0.1));
+    --gradient-secondary: linear-gradient(135deg, hsl(280 65% 70%), hsl(320 85% 65%));
+    --gradient-hero: linear-gradient(135deg, hsl(217 91% 60% / 0.15), hsl(266 85% 58% / 0.15));
+    --gradient-card: linear-gradient(135deg, hsl(217 91% 60% / 0.05), hsl(266 85% 58% / 0.05));
     --shadow-elegant: 0 10px 40px -10px hsl(217 91% 60% / 0.3);
+    --shadow-glow: 0 0 40px hsl(217 91% 60% / 0.2);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;
@@ -73,14 +79,17 @@ All colors MUST be HSL.
     --primary: 217 91% 60%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 280 65% 70%;
+    --secondary-foreground: 0 0% 100%;
 
     --muted: 217 33% 17%;
     --muted-foreground: 215 20% 65%;
 
     --accent: 266 85% 58%;
     --accent-foreground: 0 0% 100%;
+    
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
 
     --destructive: 0 63% 31%;
     --destructive-foreground: 210 40% 98%;
@@ -90,8 +99,11 @@ All colors MUST be HSL.
     --ring: 217 91% 60%;
     
     --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(266 85% 58%));
+    --gradient-secondary: linear-gradient(135deg, hsl(280 65% 70%), hsl(320 85% 65%));
     --gradient-hero: linear-gradient(135deg, hsl(217 91% 60% / 0.2), hsl(266 85% 58% / 0.2));
+    --gradient-card: linear-gradient(135deg, hsl(217 91% 60% / 0.1), hsl(266 85% 58% / 0.1));
     --shadow-elegant: 0 10px 40px -10px hsl(217 91% 60% / 0.5);
+    --shadow-glow: 0 0 60px hsl(217 91% 60% / 0.4);
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -122,5 +134,39 @@ All colors MUST be HSL.
   
   .ltr {
     direction: ltr;
+  }
+  
+  .cursor-glow {
+    pointer-events: none;
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, hsl(var(--primary) / 0.15), transparent 70%);
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease;
+    z-index: 9999;
+  }
+  
+  .dark .cursor-glow {
+    background: radial-gradient(circle, hsl(var(--primary) / 0.25), transparent 70%);
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px hsl(var(--primary) / 0.3); }
+    50% { box-shadow: 0 0 40px hsl(var(--primary) / 0.6); }
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
   }
 }

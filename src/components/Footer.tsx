@@ -72,7 +72,7 @@ export const Footer = () => {
                 <Mail className="w-6 h-6" />
               </a>
               <a
-                href={`https://wa.me/${personalInfo.whatsapp}`}
+                href={`https://wa.me/+201017011391`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"

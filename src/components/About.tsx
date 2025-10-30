@@ -56,7 +56,7 @@ export const About = () => {
           <div className="grid md:grid-cols-3 gap-6">
             <Card className="hover:shadow-xl transition-shadow">
               <CardContent className="p-6 text-center">
-                <div className="text-4xl font-bold text-primary mb-2">5+</div>
+                <div className="text-4xl font-bold text-primary mb-2">2+</div>
                 <p className="text-muted-foreground">
                   {t('Years Experience', 'سنوات الخبرة')}
                 </p>

@@ -212,7 +212,7 @@ export const personalInfo = {
     {
       title: "ITI Certificate",
       issuer: "Information Technology Institute",
-      url: null
+      url: "https://media.licdn.com/dms/image/v2/C4D22AQGZ4YL3RzX5uQ/feedshare-shrink_1280/feedshare-shrink_1280/0/1661810351522?e=1763596800&v=beta&t=bvSEJu_arZIGDmsQl7SqyRWeSyZt-MKuoyP8BwaDiPk"
     },
     {
       title: "Programming for Everybody",
@@ -227,12 +227,12 @@ export const personalInfo = {
     {
       title: "PHP Fundamentals",
       issuer: "Mahara Tech",
-      url: null
+      url: "https://www.linkedin.com/in/mahmoud-heikal/details/featured/1635500905784/single-media-viewer/?profileId=ACoAACfBNMUBuNHlk1T0NNk1VaT5HHYRCBoG8NE"
     },
     {
       title: "Database Fundamentals",
       issuer: "Mahara Tech",
-      url: null
+      url: "https://www.linkedin.com/in/mahmoud-heikal/details/featured/1635500909294/single-media-viewer/?profileId=ACoAACfBNMUBuNHlk1T0NNk1VaT5HHYRCBoG8NE"
     },
     {
       title: "Web Development",
@@ -242,7 +242,9 @@ export const personalInfo = {
   ];
   
   export const plugins = [
-    "Amazon Pay", "Stripe", "Paymob", "PayPal", "Fawry",
+    "Amazon Pay", "Stripe", "Paymob", "PayPal", "Fawry", "Tap Payment", "Opay", 
+    "WooCommerce", 
+    "Facebook Pixel", "Mailgun", "Twilio",
     "Laravel Sanctum", "Laravel Passport", "JWT Auth",
     "Redis Cache", "Queue Management", "Email Services"
   ];
