@@ -7,15 +7,20 @@ import { Testimonials } from '@/components/Testimonials';
 import { Certificates } from '@/components/Certificates';
 import { Contact } from '@/components/Contact';
 import { Footer } from '@/components/Footer';
+import { FireCursor } from '@/components/FireCursor';
 import { LanguageProvider } from '@/contexts/LanguageContext';
 import { ThemeProvider } from '@/contexts/ThemeContext';
 import { Toaster } from '@/components/ui/toaster';
+import { useCursorGlow } from '@/hooks/useCursorGlow';
 
 const Index = () => {
+  useCursorGlow();
+  
   return (
     <ThemeProvider>
       <LanguageProvider>
         <div className="min-h-screen">
+          <FireCursor />
           <Navbar />
           <Hero />
           <About />
