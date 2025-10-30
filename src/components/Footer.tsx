@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail, MessageCircle } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { personalInfo } from '@/data/portfolio';
 
@@ -70,6 +70,15 @@ export const Footer = () => {
                 aria-label="Email"
               >
                 <Mail className="w-6 h-6" />
+              </a>
+              <a
+                href={`https://wa.me/${personalInfo.whatsapp}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary transition-colors"
+                aria-label="WhatsApp"
+              >
+                <MessageCircle className="w-6 h-6" />
               </a>
             </div>
           </div>

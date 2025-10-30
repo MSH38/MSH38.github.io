@@ -2,9 +2,13 @@ import { Card, CardContent } from './ui/card';
 import { Badge } from './ui/badge';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { skills } from '@/data/portfolio';
+import { motion } from 'framer-motion';
 
 export const About = () => {
   const { t } = useLanguage();
+
+  // Check for reduced motion preference
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   return (
     <section id="about" className="py-20">
@@ -20,14 +24,30 @@ export const About = () => {
                 {t('Skills & Technologies', 'المهارات والتقنيات')}
               </h3>
               <div className="flex flex-wrap gap-2">
-                {skills.map((skill) => (
-                  <Badge
+                {skills.map((skill, index) => (
+                  <motion.div
                     key={skill}
-                    variant="secondary"
-                    className="px-4 py-2 text-sm hover:bg-primary hover:text-primary-foreground transition-colors cursor-default"
+                    initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
+                    whileInView={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ 
+                      duration: 0.3, 
+                      delay: index * 0.03,
+                      ease: 'easeOut'
+                    }}
+                    whileHover={prefersReducedMotion ? {} : { 
+                      scale: 1.05, 
+                      y: -2,
+                      transition: { duration: 0.2 }
+                    }}
                   >
-                    {skill}
-                  </Badge>
+                    <Badge
+                      variant="secondary"
+                      className="px-4 py-2 text-sm bg-slate-100 dark:bg-slate-800 hover:bg-primary hover:text-primary-foreground transition-colors cursor-default shadow-sm"
+                    >
+                      {skill}
+                    </Badge>
+                  </motion.div>
                 ))}
               </div>
             </CardContent>
@@ -36,7 +56,7 @@ export const About = () => {
           <div className="grid md:grid-cols-3 gap-6">
             <Card className="hover:shadow-xl transition-shadow">
               <CardContent className="p-6 text-center">
-                <div className="text-4xl font-bold text-primary mb-2">2+</div>
+                <div className="text-4xl font-bold text-primary mb-2">5+</div>
                 <p className="text-muted-foreground">
                   {t('Years Experience', 'سنوات الخبرة')}
                 </p>

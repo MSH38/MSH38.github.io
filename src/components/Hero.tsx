@@ -1,8 +1,8 @@
 import { Button } from './ui/button';
-import { Github, Linkedin, Mail, ExternalLink } from 'lucide-react';
+import { Github, Linkedin, Mail, ExternalLink, Download, MessageCircle } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { personalInfo } from '@/data/portfolio';
-import msh from '@/Public/images/msh.jpeg';
+
 export const Hero = () => {
   const { t } = useLanguage();
 
@@ -17,19 +17,17 @@ export const Hero = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           {/* Avatar */}
-          <div className="mb-8 inline-block">
-            <div className="w-64 h-64 rounded-full bg-gradient-to-br from-primary to-accent p-1">
-              <div className="w-full h-full rounded-full bg-background flex items-center justify-center text-4xl font-bold">
-                {/* {personalInfo.name.split(' ').map(n => n[0]).join('')} */}
-                {/* <img
-                  src={`${import.meta.env.BASE_URL}Public/images/msh.jpeg`}
+          <div className="mb-8 inline-block animate-float">
+            <div className="w-48 h-48 md:w-64 md:h-64 rounded-full bg-gradient-to-br from-primary via-accent to-secondary p-1 animate-pulse-glow">
+              <div className="w-full h-full rounded-full bg-background flex items-center justify-center overflow-hidden">
+                <img
+                  src="Public/images/msh.jpeg"
                   alt="Mahmoud Samy Heikal"
-                  className="w-full h-full rounded-full object-cover object-center scale-125 will-change-transform"
-                  loading="lazy"
+                  className="w-full h-full object-cover object-center scale-110"
+                  loading="eager"
                   width={256}
                   height={256}
-                /> */}
-                <img src={msh} alt="Mahmoud Samy Heikal" className="..." width={256} height={256} />
+                />
               </div>
             </div>
           </div>
@@ -47,17 +45,28 @@ export const Hero = () => {
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-wrap gap-4 justify-center mb-8">
-            <Button size="lg" className="gap-2" asChild>
+          <div className="flex flex-wrap gap-3 justify-center mb-8">
+            <Button size="lg" className="gap-2 shadow-lg hover:shadow-xl transition-shadow" asChild>
               <a href="#contact">
                 <Mail className="w-4 h-4" />
                 {t('Contact Me', 'تواصل معي')}
               </a>
             </Button>
-            <Button size="lg" variant="outline" className="gap-2" asChild>
+            <Button size="lg" variant="outline" className="gap-2 shadow-md hover:shadow-lg transition-shadow border-2" asChild>
               <a href="#projects">
                 <ExternalLink className="w-4 h-4" />
                 {t('View Projects', 'عرض المشاريع')}
+              </a>
+            </Button>
+            <Button 
+              size="lg" 
+              variant="secondary" 
+              className="gap-2 shadow-md hover:shadow-lg transition-shadow bg-slate-800 dark:bg-slate-700 hover:bg-slate-900 dark:hover:bg-slate-600 text-white" 
+              asChild
+            >
+              <a href={personalInfo.cvUrl} target="_blank" rel="noopener noreferrer">
+                <Download className="w-4 h-4" />
+                {t('Download CV', 'تحميل السيرة الذاتية')}
               </a>
             </Button>
           </div>
@@ -79,14 +88,24 @@ export const Hero = () => {
                 <Mail className="w-5 h-5" />
               </a>
             </Button>
+            <Button variant="ghost" size="icon" asChild>
+              <a 
+                href={`https://wa.me/${personalInfo.whatsapp}`}
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label="WhatsApp"
+              >
+                <MessageCircle className="w-5 h-5" />
+              </a>
+            </Button>
           </div>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-primary rounded-full flex justify-center">
-          <div className="w-1.5 h-3 bg-primary rounded-full mt-2" />
+      {/* Scroll Indicator - Hidden on mobile */}
+      <div className="hidden md:block absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <div className="w-6 h-10 border-2 border-primary rounded-full flex justify-center shadow-lg">
+          <div className="w-1.5 h-3 bg-primary rounded-full mt-2 animate-pulse" />
         </div>
       </div>
     </section>

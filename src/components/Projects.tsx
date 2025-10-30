@@ -5,7 +5,9 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { Github, ExternalLink } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { projects } from '@/data/portfolio';
+import { getTechColors } from '@/lib/brandColors';
 import Autoplay from 'embla-carousel-autoplay';
+import { cn } from '@/lib/utils';
 
 export const Projects = () => {
   const { t } = useLanguage();
@@ -42,11 +44,22 @@ export const Projects = () => {
                         {t(project.description.en, project.description.ar)}
                       </p>
                       <div className="flex flex-wrap gap-2 mb-4">
-                        {project.tech.map((tech) => (
-                          <Badge key={tech} variant="secondary">
-                            {tech}
-                          </Badge>
-                        ))}
+                        {project.tech.map((tech) => {
+                          const colors = getTechColors(tech);
+                          return (
+                            <Badge 
+                              key={tech} 
+                              className={cn(
+                                colors.bg,
+                                colors.text,
+                                colors.border,
+                                "shadow-sm hover:shadow-md transition-shadow"
+                              )}
+                            >
+                              {tech}
+                            </Badge>
+                          );
+                        })}
                       </div>
                       <div className="flex gap-2">
                         {project.github && (

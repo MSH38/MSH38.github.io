@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Button } from './ui/button';
-import { Moon, Sun, Globe, Menu, X } from 'lucide-react';
+import { Moon, Sun, Menu, X } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -11,7 +11,9 @@ export const Navbar = () => {
   const { language, toggleLanguage, t } = useLanguage();
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -20,7 +22,7 @@ export const Navbar = () => {
     { en: 'About', ar: 'نبذة', href: '#about' },
     { en: 'Experience', ar: 'الخبرة', href: '#experience' },
     { en: 'Projects', ar: 'المشاريع', href: '#projects' },
-    { en: 'Reviews', ar: 'اراء العملاء', href: '#testimonials' },
+    { en: 'Testimonials', ar: 'التوصيات', href: '#testimonials' },
     { en: 'Contact', ar: 'تواصل', href: '#contact' }
   ];
 
@@ -32,18 +34,19 @@ export const Navbar = () => {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between md:h-16 py-2 gap-3">
-          <div className="flex flex-col text-center leading-tight items-center justify-between ">
+          {/* ===== Brand (stacked: MSH over Mahmoud Heikal) ===== */}
+          <div className="flex flex-col items-center justify-center leading-tight">
             <a
               href="#"
               className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
-              aria-label={t('Go to top', 'الذهاب للأعلى')}
             >
-              {('MSH')}
+              MSH
             </a>
-            <small className="text-xs -mt-1 text-foreground/60">
+            <small className="text-xs -mt-0.5 text-foreground/60">
               {t('Mahmoud Heikal', 'محمود هيكل')}
             </small>
           </div>
+          {/* ================================================ */}
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-6">
@@ -68,25 +71,19 @@ export const Navbar = () => {
             >
               {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </Button>
-
             <Button
               variant="ghost"
-              size="icon"
               onClick={toggleLanguage}
               aria-label={t('Toggle language', 'تبديل اللغة')}
-              className="flex items-center"
+              className="px-3"
             >
-              <Globe className="h-5 w-5" />
-              {/* لو بتستخدم dir=rtl على الـhtml، تقدر تستخدم utilities منطقية:
-                 ltr:ml-1 rtl:mr-1 بدل ms/me لو مش مفعّلة */}
-              <span className="text-xs ltr:ml-1 rtl:mr-1">{language.toUpperCase()}</span>
+              <span className="text-sm font-medium">{language.toUpperCase()}</span>
             </Button>
-
             <Button
               variant="ghost"
               size="icon"
               className="md:hidden"
-              onClick={() => setIsMobileMenuOpen((s) => !s)}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label={t('Toggle menu', 'فتح القائمة')}
             >
               {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -94,9 +91,9 @@ export const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile Menu: ياخد صف تاني في الموبايل فقط */}
+        {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-3 border-t border-border">
+          <div className="md:hidden py-4 border-t border-border">
             <div className="flex flex-col gap-4">
               {navItems.map((item) => (
                 <a

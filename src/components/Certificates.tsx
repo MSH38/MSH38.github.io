@@ -1,7 +1,9 @@
 import { Badge } from './ui/badge';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { certificates, plugins } from '@/data/portfolio';
+import { getTechColors } from '@/lib/brandColors';
 import { ExternalLink } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 export const Certificates = () => {
   const { t } = useLanguage();
@@ -51,15 +53,22 @@ export const Certificates = () => {
           </h3>
           <div className="relative">
             <div className="flex gap-3 animate-scroll-reverse">
-              {[...plugins, ...plugins, ...plugins].map((plugin, index) => (
-                <Badge
-                  key={index}
-                  variant="outline"
-                  className="flex-shrink-0 px-4 py-2 text-sm"
-                >
-                  {plugin}
-                </Badge>
-              ))}
+              {[...plugins, ...plugins, ...plugins].map((plugin, index) => {
+                const colors = getTechColors(plugin);
+                return (
+                  <Badge
+                    key={index}
+                    className={cn(
+                      colors.bg,
+                      colors.text,
+                      colors.border,
+                      "flex-shrink-0 px-4 py-2 text-sm shadow-sm hover:shadow-md transition-shadow"
+                    )}
+                  >
+                    {plugin}
+                  </Badge>
+                );
+              })}
             </div>
           </div>
         </div>
