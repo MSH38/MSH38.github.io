@@ -19,7 +19,7 @@ export const Hero = () => {
           {/* Avatar */}
           <div className="mb-8 inline-block animate-float">
             <div className="w-48 h-48 md:w-64 md:h-64 rounded-full bg-gradient-to-br from-primary via-accent to-secondary p-1 animate-pulse-glow">
-              <div className="w-full h-full rounded-full bg-background flex items-center justify-center overflow-hidden">
+              {/* <div className="w-full h-full rounded-full bg-background flex items-center justify-center overflow-hidden">
                 <img
                   src="images/msh.jpeg"
                   alt="Mahmoud Samy Heikal"
@@ -28,7 +28,20 @@ export const Hero = () => {
                   width={256}
                   height={256}
                 />
+              </div> */}
+              <div className="w-64 h-64 md:w-64 md:h-64 rounded-full bg-gradient-to-br from-primary via-accent to-secondary p-1 animate-pulse-glow">
+                <div className="w-full h-full rounded-full bg-background flex items-center justify-center overflow-hidden">
+                  <img
+                    src="images/msh.jpeg"
+                    alt="Mahmoud Samy Heikal"
+                    className="w-full h-full object-cover object-center object-[center_45%] scale-110 translate-y-2 md:translate-y-3 will-change-transform"
+                    loading="eager"
+                    width={256}
+                    height={256}
+                  />
+                </div>
               </div>
+
             </div>
           </div>
 
@@ -58,10 +71,10 @@ export const Hero = () => {
                 {t('View Projects', 'عرض المشاريع')}
               </a>
             </Button>
-            <Button 
-              size="lg" 
-              variant="secondary" 
-              className="gap-2 shadow-md hover:shadow-lg transition-shadow bg-slate-800 dark:bg-slate-700 hover:bg-slate-900 dark:hover:bg-slate-600 text-white" 
+            <Button
+              size="lg"
+              variant="secondary"
+              className="gap-2 shadow-md hover:shadow-lg transition-shadow bg-slate-800 dark:bg-slate-700 hover:bg-slate-900 dark:hover:bg-slate-600 text-white"
               asChild
             >
               <a href="https://drive.google.com/file/d/1B3zF5bvnpK4QxJIvwoxR1XcL5q3ACHjy/view?usp=drive_link" target="_blank" rel="noopener noreferrer">
@@ -89,10 +102,10 @@ export const Hero = () => {
               </a>
             </Button>
             <Button variant="ghost" size="icon" asChild>
-              <a 
+              <a
                 href={`https://wa.me/+201017011391`}
-                target="_blank" 
-                rel="noopener noreferrer" 
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="WhatsApp"
               >
                 <MessageCircle className="w-5 h-5" />
