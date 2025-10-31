@@ -217,7 +217,5 @@ canvas {
 .fire-cursor,
 .cursor-glow {
   contain: paint;
-  /* يمنع تأثيرها على السُكرول */
   inset: auto;
-  /* نتأكد إنها مش عاملة تمدد */
 }
