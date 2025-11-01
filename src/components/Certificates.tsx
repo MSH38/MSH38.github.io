@@ -93,7 +93,6 @@ export const Certificates = () => {
         </div>
       </div>
 
-      {/* Styles: أسرع على الموبايل + loop بلا نهاية + احترام reduced motion */}
       <style>{`
         :root {
           --scroll-duration: 30s;
