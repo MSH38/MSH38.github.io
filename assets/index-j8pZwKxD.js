@@ -250,8 +250,8 @@ In February 2024, I worked as a freelance backend developer at Semicolon.
         /* أسرع في الموبايل */
         @media (max-width: 640px) {
           :root {
-            --scroll-duration: 20s;
-            --scroll-duration-rev: 30s;
+            --scroll-duration: 30s;
+            --scroll-duration-rev: 40s;
           }
         }
 
