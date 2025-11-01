@@ -219,3 +219,8 @@ canvas {
   contain: paint;
   inset: auto;
 }
+.compact-lines br {
+  display: block;
+  margin: 2px 0; 
+  line-height: 2; 
+}

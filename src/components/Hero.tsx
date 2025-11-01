@@ -23,7 +23,7 @@ export const Hero = () => {
                 <img
                   src="images/msh.jpeg"
                   alt="Mahmoud Samy Heikal"
-                  className="w-full h-full object-cover object-center scale-110"
+                  className="w-full h-full object-cover object-center scale-110 translate-y-2 md:translate-y-0"
                   loading="eager"
                   width={256}
                   height={256}

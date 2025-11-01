@@ -43,7 +43,12 @@ export const About = () => {
                   >
                     <Badge
                       variant="secondary"
-                      className="px-4 py-2 text-sm bg-slate-100 dark:bg-slate-800 hover:bg-primary hover:text-primary-foreground transition-colors cursor-default shadow-sm"
+                      // className="px-4 py-2 text-sm bg-slate-100 text-slate-600 dark:bg-slate-800 dark:border-primary dark:text-primary dark:hover-bg-white hover:bg-primary hover:text-primary-foreground transition-colors cursor-default shadow-sm"
+                      className="px-4 py-2 text-sm bg-slate-100 text-slate-600 
+             dark:bg-slate-800 dark:border-primary dark:text-primary 
+             hover:bg-primary hover:text-primary-foreground 
+             dark:hover:bg-white dark:hover:text-slate-900 
+             transition-colors cursor-default shadow-sm"
                     >
                       {skill}
                     </Badge>
