@@ -103,8 +103,8 @@ export const Certificates = () => {
         /* أسرع في الموبايل */
         @media (max-width: 640px) {
           :root {
-            --scroll-duration: 20s;
-            --scroll-duration-rev: 30s;
+            --scroll-duration: 30s;
+            --scroll-duration-rev: 40s;
           }
         }
 
